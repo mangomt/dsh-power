@@ -1,0 +1,53 @@
+{
+  "name": "dsh-power",
+  "version": "0.3.0",
+  "description": "Floating power dock for the DeepSeek Harness web GUI: one-click restart or graceful shutdown of the dsh web host, loopback-guarded and dependency-free.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mangomt/dsh-power.git"
+  },
+  "homepage": "https://github.com/mangomt/dsh-power#readme",
+  "bugs": {
+    "url": "https://github.com/mangomt/dsh-power/issues"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./client/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "client",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "shutdown",
+    "power",
+    "web"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-connection",
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-locale"
+      ],
+      "platform": "web"
+    }
+  }
+}

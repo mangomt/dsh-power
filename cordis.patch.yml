@@ -1,0 +1,12 @@
+# dsh-power bundle patch: inserts this plugin into a profile's layer stack.
+# The row config below feeds apply(ctx, config); every key has the same
+# default in lib/index.js, so the block can be trimmed to taste.
+- insert:
+    - id: dsh-power
+      name: 'dsh-power'
+      config:
+        # Host lifecycle timing (milliseconds).
+        shutdownDelayMs: 1000   # shutdown: response → graceful self-exit
+        restartDelayMs: 1000    # restart: response → helper handoff + self-exit
+        # Set false under a supervisor (systemd/launchd/pm2) — it owns restarts.
+        allowRestart: true
